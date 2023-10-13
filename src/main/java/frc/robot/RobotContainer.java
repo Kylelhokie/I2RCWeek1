@@ -24,9 +24,11 @@ public class RobotContainer {
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final Joystick joy1 = new Joystick(Constants.USBOrder.Zero);
 
-  private final DriveTrain dt = new DriveTrain();
+  public final DriveTrain dt = new DriveTrain();
 
   private final TankDrive tankDrive = new TankDrive(dt, joy1);
+
+  private final EncoderDrive encoderDrive = new EncoderDrive(dt, 1.0);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -55,6 +57,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return null;
+    return encoderDrive;
   }
 }
