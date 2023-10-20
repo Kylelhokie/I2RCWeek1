@@ -30,13 +30,14 @@ public class RobotContainer {
 
   private final EncoderDrive encoderDrive = new EncoderDrive(dt, 1.0);
 
+  private final PIDTurnCCW pid= new PIDTurnCCW(dt, 0);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     dt.setDefaultCommand(tankDrive);
-    // Configure the trigger bindings
     configureBindings();
   }
-
+    // Configure the trigger bindings
+    
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
    * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
@@ -57,6 +58,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return encoderDrive;
+    return pid;
   }
 }
